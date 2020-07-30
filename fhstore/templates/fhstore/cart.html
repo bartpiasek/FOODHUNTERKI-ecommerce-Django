@@ -1,0 +1,48 @@
+{% extends 'fhstore/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div>
+            
+            <table>
+            <div class="row row-cols-4">
+            <div class="container">
+                <th><button type="button" class="btn btn-light">&#x2190; Kontynuuj zakupy</button></th>
+                <th><h5>Przedmioty: <strong>{{order.get_cart_items}}</strong></h5></th>
+                <th><h5>Razem: <strong>{{order.get_cart_total|floatformat:2}} zł</strong></h5></th>
+                <th><button type="button" class="btn btn-outline-success">&#x2192; Do zapłaty</button></th>
+            </div>
+            </tr>
+            </div>
+            </table>
+            
+            <hr class="horizontal-line">
+            
+            <div class="container">
+				<div class="row row-cols-4">
+					<div style="flex:2"></div>
+					<div style="flex:2"><strong>Produkt</strong></div>
+					<div style="flex:1"><strong>Cena</strong></div>
+					<div style="flex:1"><strong>Ilość</strong></div>
+					<div style="flex:1"><strong>Razem</strong></div>
+				</div>
+                <hr class="horizontal-line">
+                {% for item in items %}
+                <div class="row row-cols-4">
+                    <div style="flex:2"><img class="thumbnail" src="{{item.product.imageURL}}"></div>
+                    <div style="flex:2"><p>{{item.product.name}}</p></div>
+                    <div style="flex:1"><p>zł{{item.product.price|floatformat:2}} PLN<</p></div>
+                    <div style="flex:1">
+                        <p class="quantity">x{{item.quantity}}</p>
+                        <div class="quantity">
+                            <a class="btn btn-success" href="{% url 'cart' %}">+</a>
+                            <a class="btn btn-success" href="{% url 'cart' %}">-</a>
+                        </div>
+                    </div>
+                    <div style="flex:1"><p>zł {{item.get_total|floatformat:2}} PLN<</p></div>
+                </div>
+                <hr class="horizontal-line">
+                {% endfor %}
+            </div>
+        </div>
+{% endblock content %}
