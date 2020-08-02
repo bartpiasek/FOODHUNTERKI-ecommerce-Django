@@ -8,10 +8,9 @@
             <div class="box-element-item">
                 <h4>{{product.name}}</h4>
                 <hr class="horizontal-line">
-
                 <button class="btn btn-outline-secondary">Podgląd</button>
-                <a data-product="{{product.id}}" data-action="add" class="btn btn-outline-light add=btn update-cart" href="#">Dodaj do koszyka</a>
-                <h3 style="display: inline-block; float: right"><strong>zł{{product.price|floatformat:2}} PLN<</strong></h3>
+                <button data-product={{product.id}} data-action="add" class="btn btn-outline-light add-btn update-cart">Dodaj do koszyka</button>
+                <h7 style="display: inline-block; float: right"><strong>{{product.price|floatformat:2}} PLN</strong></h7>
             </div>
         </div>
     {% endfor %}
