@@ -39,7 +39,9 @@
     </div>
     <div class="navbar-nav-right">
         <a class="btn btn-light" href="{% url 'store' %}">Zaloguj</a>
-        <a class="btn btn-success" href="{% url 'cart' %}">Koszyk</a>
+        <a class="btn btn-success" href="{% url 'cart' %}">Koszyk
+            <span class="badge badge-light" id="cart-total">{{cartItems}}</span>
+        </a>
     </div>
     <hr class="horizontal-line">
 </nav>

@@ -7,10 +7,10 @@
             <table>
             <div class="row row-cols-4">
             <div class="container">
-                <th><button type="button" class="btn btn-light">&#x2190; Kontynuuj zakupy</button></th>
+                <th><a class="btn btn-light" href="{% url 'store' %}">&#x2190; Kontynuuj zakupy</a></th>
                 <th><h5>Przedmioty: <strong>{{order.get_cart_items}}</strong></h5></th>
                 <th><h5>Razem: <strong>{{order.get_cart_total|floatformat:2}} zł</strong></h5></th>
-                <th><button type="button" class="btn btn-outline-success">&#x2192; Do zapłaty</button></th>
+                <th><a class="btn btn-outline-success" href="{% url 'checkout' %}">&#x2192; Do zapłaty</a></th>
             </div>
             </tr>
             </div>
@@ -29,17 +29,17 @@
                 <hr class="horizontal-line">
                 {% for item in items %}
                 <div class="row row-cols-4">
-                    <div style="flex:2"><img class="thumbnail" src="{{item.product.imageURL}}"></div>
-                    <div style="flex:2"><p>{{item.product.name}}</p></div>
-                    <div style="flex:1"><p>zł{{item.product.price|floatformat:2}} PLN<</p></div>
+                    <div style="flex:2"><img class="thumbnail-checkout" src="{{item.product.imageURL}}"></div>
+                    <div style="flex:2">{{item.product.name}}</div>
+                    <div style="flex:1"><p>{{item.product.price|floatformat:2}} PLN</p></div>
                     <div style="flex:1">
                         <p class="quantity">x{{item.quantity}}</p>
                         <div class="quantity">
-                            <a class="btn btn-success" href="{% url 'cart' %}">+</a>
-                            <a class="btn btn-success" href="{% url 'cart' %}">-</a>
+                            <button data-product={{item.product.id}} data-action="add" class="btn btn-outline-light add-btn update-cart">+</button>
+                            <button data-product={{item.product.id}} data-action="remove" class="btn btn-outline-light add-btn update-cart">-</button>
                         </div>
                     </div>
-                    <div style="flex:1"><p>zł {{item.get_total|floatformat:2}} PLN<</p></div>
+                    <div style="flex:1">{{item.get_total|floatformat:2}} PLN</div>
                 </div>
                 <hr class="horizontal-line">
                 {% endfor %}

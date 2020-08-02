@@ -42,8 +42,14 @@
 }
 .thumbnail {
     align-self: center;
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+}
+.thumbnail-checkout {
+    align-self: center;
+    width: 150px;
+    height: 150px;
     border-radius: 15px;
 }
 .row.row-cols-2 {
