@@ -7,7 +7,7 @@
             <table>
             <div class="row row-cols-4">
             <div class="container">
-                <th><a class="btn btn-light" href="{% url 'store' %}">&#x2190; Kontynuuj zakupy</a></th>
+                <th><a class="btn btn-outline-light" href="{% url 'store' %}">&#x2190; Kontynuuj zakupy</a></th>
                 <th><h5>Przedmioty: <strong>{{order.get_cart_items}}</strong></h5></th>
                 <th><h5>Razem: <strong>{{order.get_cart_total|floatformat:2}} zł</strong></h5></th>
                 <th><a class="btn btn-outline-success" href="{% url 'checkout' %}">&#x2192; Do zapłaty</a></th>

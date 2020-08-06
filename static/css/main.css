@@ -20,6 +20,12 @@
     border-radius: 3px;
     margin: 15px;
 }
+.fhlogosmall {
+    height: 10px;
+    height: 10px;
+    max-width: 5%;
+    max-height: 5%;
+}
 .horizontal-line {
     color: pink;
     border-color: pink;
@@ -68,4 +74,20 @@
 }
 .form-control {
     margin-top: 5px;
+}
+.footer-icon {
+    align-self: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.footer-link {
+    align-self: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }

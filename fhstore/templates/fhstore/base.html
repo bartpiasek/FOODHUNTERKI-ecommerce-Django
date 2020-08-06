@@ -55,12 +55,13 @@
     <!-- Image and text -->
 <nav class="navbar-bar">
     <div class="navbar-nav-left">
-        <a class="btn btn-light" href="{% url 'store' %}">Foodhunterki Store</a>
-        <a class="btn btn-light" href="{% url 'payment_info' %}">Płatność i dostawy</a>
-        <a class="btn btn-light" href="{% url 'contact' %}">Kontakt</a>
+        {% comment %} <img class="fhlogosmall" src="{% static '/images/fhlogo.png' %}"></img> {% endcomment %}
+        <a class="btn btn-outline-light" href="{% url 'store' %}">Foodhunterki Store</a>
+        <a class="btn btn-outline-light" href="{% url 'payment_info' %}">Płatność i dostawy</a>
+        <a class="btn btn-outline-light" href="{% url 'contact' %}">Kontakt</a>
     </div>
     <div class="navbar-nav-right">
-        <a class="btn btn-light" href="{% url 'store' %}">Zaloguj</a>
+        <a class="btn btn-outline-light" href="{% url 'store' %}">Zaloguj</a>
         <a class="btn btn-success" href="{% url 'cart' %}">Koszyk
             <span class="badge badge-light" id="cart-total">{{cartItems}}</span>
         </a>
@@ -79,5 +80,7 @@
 
     <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
     
+    {% include "fhstore/footer.html" %}
 </body>
+
 </html>

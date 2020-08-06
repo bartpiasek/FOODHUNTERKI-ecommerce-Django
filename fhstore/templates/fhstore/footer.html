@@ -11,24 +11,14 @@
 <body>
     <!-- Image and text -->
 <nav class="navbar-bar">
-    <div class="navbar-nav-left">
-        <a class="btn btn-light" href="{% url 'store' %}">Foodhunterki Store</a>
-        <a class="btn btn-light" href="{% url 'store' %}">Płatność i dostawy</a>
-        <a class="btn btn-light" href="{% url 'store' %}">Kontakt</a>
-    </div>
-    <div class="navbar-nav-right">
-        <a class="btn btn-light" href="{% url 'store' %}">Zaloguj</a>
-        <a class="btn btn-success" href="{% url 'cart' %}">Koszyk
-            <span class="badge badge-light" id="cart-total">{{cartItems}}</span>
-        </a>
-    </div>
     <hr class="horizontal-line">
+    <nav class="nav nav-pills flex-column flex-sm-row">
+            <a class="footer-link" href="#">Regulamin</a>
+            <a class="footer-link" href="#">Dostawy i płatności</a>
+            <img class="footer-icon" src="{% static '/images/001-instagram.svg' %}"></img>
+            <img class="footer-icon" src="{% static '/images/002-facebook.svg' %}"></img> 
+    </nav>
 </nav>
-    <div class="container">
-        {% block content %}
-        {% endblock content %}
-    </div>
-
         <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
