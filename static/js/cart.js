@@ -15,10 +15,35 @@ for ( var i = 0; i < updateButtons.length; i++) {
     })
 }
 
+function addCookieItem(productId, action){
+    console.log('User is not authenticated')
+
+    if (action == 'add') {
+        if (cart[productId] == undefined) {
+            cart[productId] = {'quantity':1}
+        } else {
+            cart[productId]['quantity'] += 1
+        }
+    }
+
+    if (action == 'remove') {
+        cart[productId]['quantity'] -= 1
+
+        if (cart[productId]['quantity'] <= 0) {
+            console.log('Remove Item')
+            delete cart[productId]
+        } 
+    
+    }
+    console.log('CART:',cart)
+    document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+    location.reload()
+}
+
 function updateUserOrder(productId, action) {
     console.log('User is logged in, sending data...')
 
-    var url = 'http://127.0.0.1:8000/update_item/';
+    var url = 'http://127.0.0.1:8000/update_item/'
     fetch(url, {
         method:"POST",
         headers:{
@@ -39,27 +64,4 @@ function updateUserOrder(productId, action) {
     });
 }
 
-function addCookieItem(productId, action){
-    console.log('User is not authenticated')
 
-    if (action == 'add') {
-        if (cart[productId] == undefined) {
-            cart[productId] = {'quantity':1}
-        } else {
-            cart[productId]['quantity'] += 1
-        }
-    }
-
-    if (action == 'remove') {
-        cart[productId]['quantity'] -= 1
-
-        if (cart[productId]['quantity'] <= 0) {
-            console.log('Item shuld be deleted')
-            delete cart[productId];
-        } 
-    
-    }
-    console.log('CART:',cart)
-    document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
-    location.reload()
-}
