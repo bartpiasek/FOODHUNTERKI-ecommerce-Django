@@ -43,16 +43,18 @@ def checkout(request):
 
 
 def updateItem(request):
+    #było request.body
     data = json.loads(request.body)
-    ProductId = data['productId']
+    productId = data['productId']
     action = data['action']
     print('Action:', action)
-    print('Product:', ProductId)
+    print('productId:', productId)
 
     customer = request.user.customer
-    product = Product.objects.get(id=ProductId)
+    product = Product.objects.get(id=productId)
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
     orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+    
     if action == 'add':
         orderItem.quantity = (orderItem.quantity + 1)
     elif action == 'remove':
@@ -65,14 +67,34 @@ def updateItem(request):
 
     return JsonResponse('Item was added', safe=False)
 
-
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
-    data = json.load(request.body)
+    data = json.loads(request.body)
 
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        total = float(data['form']['total'])
+        order.transaction_id = transaction_id
+
+        if total == float(order.get_cart_total):
+            order.complete = True
+        order.save()
+
+        if order.shipping == True:
+            ShippingAddress.objects.create(
+                customer=customer,
+                order=order,
+                # FORM DATA from var shippingInfo - checkout.html
+                address=data['shipping']['address'],
+                city=data['shipping']['city'],
+                state=data['shipping']['state'],
+                zipcode=data['shipping']['zipcode'],
+            )
+
+    else:
+        customer, order = guestOrder(request, data)  
+        
         # DELETE THIS? 129 +6
         total = float(data['form']['total'])
         order_transaction_id = transaction_id
@@ -91,28 +113,23 @@ def processOrder(request):
                 state=data['shipping']['state'],
                 zipcode=data['shipping']['zipcode'],
             )
-    else:
-        print('User is not logged in')
+        else:
+            print('User is not logged in')
 
         print('COOKIES:', request.COOKIES)
         name = data['form']['name']
         email = data['form']['email']
         cookieData = cookieCart(request)
         items = cookieData['items']
-        customer, created = Customer.objects.get_or_create(
-            email = email,
-            )
+        customer, created = Customer.objects.get_or_create(email = email)
         customer.name = name 
         customer.save()
 
-        order = Order.objects.create(
-            customer=customer,
-            complete=False,
-            )
-        for item in items:
-            product = Product.objects.get(id=item['product']['id'])
+        order = Order.objects.create(customer=customer, complete=False)
 
-            orderItem = orderItem.objects.create(
+        for item in items:
+            product = Product.objects.get(id=item['id'])
+            orderItem = OrderItem.objects.create(
                 product=product,
                 order=order,
                 quantity=item['quantity']

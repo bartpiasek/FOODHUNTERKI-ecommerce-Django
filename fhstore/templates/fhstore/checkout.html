@@ -74,8 +74,8 @@
 		</div>
 	</div>
 <script type="text/javascript">
-	const shipping = '{{order.shipping}}'
-	const total = '{{order.get_cart_total|floatformat:2}}'
+	var shipping = '{{order.shipping}}'
+	var total = '{{order.get_cart_total}}'
 
 	if (shipping == 'False') {
 		document.getElementById('shipping-info').innerHTML=""
@@ -90,15 +90,16 @@
 		document.getElementById('payment-info').classList.remove('hidden');
 	}
 
-	const form = document.getElementById('form')
+	var form = document.getElementById('form')
+
 	csrftoken = form.getElementByTagName('input')[0].value
 	console.log('Newtoken:', form.getElementByTagName('input')[0].value)
 
 	form.addEventListener('submit', function(event) {
 		event.preventDefault()
 		console.log('Form S...')
-		document.getElementById('form-button').classList.add('hidden');
-		document.getElementById('payment-info').classList.remove('hidden');
+		document.getElementById('form-button').classList.add('hidden')
+		document.getElementById('payment-info').classList.remove('hidden')
 	})
 	document.getElementById('make-payment').addEventListener('click', function(event){
 		submitFormData()
@@ -107,15 +108,15 @@
 	function submitFormData(){
 		console.log('Payment buton click')
 
-		const userFormData = {
+		var userFormData = {
 			'name':null,
-			'email':email,
+			'email':null,
 			'total':total,
 		}
 
-		const shippingInfo = {
+		var shippingInfo = {
 			'address':null,
-			'city':email,
+			'city':null,
 			'state':null,
 			'zipcode':null,
 		}
@@ -131,7 +132,7 @@
 			userFormData.email = form.email.value
 		}
 
-		const url = '/process_order/'
+		var url = '/process_order/'
 		fetch(url,{
 			method:'POST',
 			headers:{
