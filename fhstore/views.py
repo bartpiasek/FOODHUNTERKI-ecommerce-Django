@@ -22,7 +22,7 @@ def store(request):
 
 def cart(request):
     data = cartData(request)
-
+    # BELOW ELSE?
     cartItems = data['cartItems']
     order = data['order']
     items = data['items']
