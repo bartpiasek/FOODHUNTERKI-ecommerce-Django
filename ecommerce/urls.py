@@ -19,10 +19,16 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+#TURN ON/OFF APP - fhapipage 
+if 'fhapipage' in settings.INSTALLED_APPS:
+    urlpatterns += url('api/', include('fhapipage.urls'), name='fhapipage'),
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('fhstore.urls')),
-    path('', include('fhapipage.urls')),
+    path('store/', include('fhstore.urls')),
+    #path('api/', include('fhapipage.urls')),
+    path('home/', include('fhblog.urls')),
 ]
+
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

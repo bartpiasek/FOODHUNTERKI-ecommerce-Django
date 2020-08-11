@@ -1,0 +1,11 @@
+{% extends 'fhblog/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% for post in posts %}
+    <div>
+        <h1>{{post.title}}</h1>
+        <h3>{{postauthor}} on {{post.date_posted}}</h3>
+    </div>
+    {% endfor %}
+{% endblock content %}
