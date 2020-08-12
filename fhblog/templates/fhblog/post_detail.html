@@ -1,0 +1,15 @@
+{% include "fhblog/base.html" %}
+{% block content %}
+<div class="poststyle">
+    <a class="btn btn-outline-light" href="{% url 'home' %}">Wróć</a> 
+    {% if user.is_authenticated %}
+        <a class="btn btn-outline-light" href={% url 'post-edit' post.pk %}>Edytuj post</a>
+        <a class="btn btn-outline-light" href={% url 'post-delete' post.pk %}>Usuń post</a>
+    {% endif %}
+    <h1>{{post.title}}</h1>
+    <h5>Napisany przez: {{ post.author }}</h5>
+    <hr class="horizontal-line">
+    {{post.content|safe}}
+</div>
+
+{% endblock content %}

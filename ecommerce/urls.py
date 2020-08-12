@@ -25,9 +25,12 @@ if 'fhapipage' in settings.INSTALLED_APPS:
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('store/', include('fhstore.urls')),
+    path('', include('fhstore.urls')),
     #path('api/', include('fhapipage.urls')),
     path('home/', include('fhblog.urls')),
+    
+    path('auth/', include('django.contrib.auth.urls')),
+    path('auth/', include('fhauthsystem.urls')),
 ]
 
 

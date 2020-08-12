@@ -1,11 +1,20 @@
-{% extends 'fhblog/base.html' %}
-{% load static %}
-
+{% comment %} {% extends 'fhblog/base.html' %} {% endcomment %}
+{% include "fhblog/base.html" %}
 {% block content %}
-    {% for post in posts %}
-    <div>
-        <h1>{{post.title}}</h1>
-        <h3>{{postauthor}} on {{post.date_posted}}</h3>
+<div class="globalstyle">
+<h1>Posty</h1>
+<hr class="horizontal-line">
+    <div class="poststyle">
+        {% for post in object_list %}
+        {% comment %} <div class="poststyle"> {% endcomment %}
+            <li><a href="{% url 'post-detail' post.pk %}">{{post.title}}</a><br/>
+            {{post.content|slice:":100"|safe}}</li>
+            
+            {% comment %} {{post.image}} {% endcomment %}
+        {% comment %} </div> {% endcomment %}
+        {% endfor %}
     </div>
-    {% endfor %}
+</div>
 {% endblock content %}
+
+

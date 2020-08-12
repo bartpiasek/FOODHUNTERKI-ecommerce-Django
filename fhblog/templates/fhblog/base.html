@@ -11,12 +11,18 @@
 <body>
     <nav class="navbar-bar">
         <div class="navbar-nav-left">
-            <a class="btn btn-outline-light" href="">asdf</a>
+            <a class="btn btn-outline-light" href="{% url 'home' %}">Strona główna</a>
+            <a class="btn btn-outline-light" href="{% url 'post-new' %}">Nowy post</a>
             <a class="btn btn-outline-light" href="">O nas</a>
             <a class="btn btn-outline-light" href="">Kontakt</a>
         </div>
         <div class="navbar-nav-right">
-            <a class="btn btn-outline-light" href="">Zaloguj</a>
+            {% if user.is_authenticated %}
+                <a class="btn btn-outline-light" href="{% url 'logout' %}">Wyloguj</a>
+            {% else %}
+                <a class="btn btn-outline-light" href="{% url 'login' %}">Zaloguj</a>
+                <a class="btn btn-outline-light" href="{% url 'register' %}">Utwórz konto</a>
+            {% endif %}
             <a class="btn btn-success" href="">Sklep</a>
         </div>
         <hr class="horizontal-line">

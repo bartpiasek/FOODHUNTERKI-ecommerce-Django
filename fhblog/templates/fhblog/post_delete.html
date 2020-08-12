@@ -1,0 +1,14 @@
+{% include "fhblog/base.html" %}
+{% block content %}
+<h1>Usuń {{post.title}}</h1>
+<div class="poststyle">
+    <div class="form-group">
+       <form method="POST">
+        {% csrf_token %}
+            <button class="btn btn-outline-light">Usuń post</button>
+       </form>
+    </div>
+</div>
+{% endblock content %}
+
+

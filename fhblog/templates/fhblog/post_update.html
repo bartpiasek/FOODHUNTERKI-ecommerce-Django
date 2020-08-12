@@ -1,0 +1,19 @@
+{% include "fhblog/base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Edytuj post</h1>
+<div class="poststyle">
+    <div class="form-group">
+       <form method="POST">
+       {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-outline-light">Zapisz zmiany</button>
+       </form>
+    </div>
+</div>
+{% else %}
+<h5>Nie jesteś zalogowany/a!</h5>
+{% endif %}
+{% endblock content %}
+
+
