@@ -55,14 +55,16 @@
 <body>
     <!-- Image and text -->
 <nav class="navbar-bar">
+    <nav class="navbar-bar">
+    <a href="{% url 'home' %}">
+        <img border="0" alt="Foodhunterki" src="{% static 'images/fhblog/profiles/fhlogo.png' %}" width="50" height="50">
+    </a>
     <div class="navbar-nav-left">
-        {% comment %} <img class="fhlogosmall" src="{% static '/images/fhlogo.png' %}"></img> {% endcomment %}
-        <a class="btn btn-outline-light" href="{% url 'store' %}">Foodhunterki Store</a>
-        <a class="btn btn-outline-light" href="{% url 'payment_info' %}">Płatność i dostawy</a>
-        <a class="btn btn-outline-light" href="{% url 'contact' %}">Kontakt</a>
+        <a class="btn btn-outline-light-menu" href="{% url 'payment_info' %}">Płatność i dostawy</a>
+        <a class="btn btn-outline-light-menu" href="{% url 'contact' %}">Kontakt</a>
     </div>
     <div class="navbar-nav-right">
-        <a class="btn btn-outline-light" href="{% url 'store' %}">Zaloguj</a>
+        <a class="btn btn-outline-light-menu" href="{% url 'store' %}">Zaloguj</a>
         <a class="btn btn-success" href="{% url 'cart' %}">Koszyk
             <span class="badge badge-light" id="cart-total">{{cartItems}}</span>
         </a>

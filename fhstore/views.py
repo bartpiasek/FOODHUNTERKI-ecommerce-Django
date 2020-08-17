@@ -67,6 +67,7 @@ def updateItem(request):
 
     return JsonResponse('Item was added', safe=False)
 
+
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
@@ -98,8 +99,10 @@ def processOrder(request):
 
     return JsonResponse('Payment complete', safe=False)
 
+
 def contact(request):
     return render(request, 'fhstore/contact.html')
+
 
 def paymentInfo(request):
     return render(request, 'fhstore/payment.html')

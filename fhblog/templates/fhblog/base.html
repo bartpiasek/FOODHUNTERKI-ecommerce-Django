@@ -10,20 +10,32 @@
 </head>
 <body>
     <nav class="navbar-bar">
+        <a href="{% url 'home' %}">
+            <img border="0" alt="Foodhunterki" src="{% static 'images/fhblog/profiles/fhlogo.png' %}" width="50" height="50">
+        </a>
         <div class="navbar-nav-left">
-            <a class="btn btn-outline-light" href="{% url 'home' %}">Strona główna</a>
-            <a class="btn btn-outline-light" href="{% url 'post-new' %}">Nowy post</a>
-            <a class="btn btn-outline-light" href="">O nas</a>
-            <a class="btn btn-outline-light" href="">Kontakt</a>
+            <a class="btn btn-outline-light-menu" href="">O nas</a>
+            <a class="btn btn-outline-light-menu" href="">Szukaj przepisów</a>
+            <a class="btn btn-outline-light-menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Miejsca &#8595;
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% for item in cat_menu %}
+                    <a class="dropdown-item" href="{% url 'category' item|slugify %}">{{item}}</a><br/>
+                {% endfor %}
+                <a class="dropdown-item" href="{% url 'category-list' %}">Wyświetl wszystkie</a>
+            </div>
         </div>
         <div class="navbar-nav-right">
             {% if user.is_authenticated %}
-                <a class="btn btn-outline-light" href="{% url 'logout' %}">Wyloguj</a>
+                <a class="btn btn-outline-light-menu" href="{% url 'edit-profile' %}">Mój profil</a>
+                <a class="btn btn-outline-light-menu" href="{% url 'post-new' %}">Nowy post</a>
+                <a class="btn btn-outline-light-menu" href="{% url 'logout' %}">Wyloguj</a>
             {% else %}
-                <a class="btn btn-outline-light" href="{% url 'login' %}">Zaloguj</a>
-                <a class="btn btn-outline-light" href="{% url 'register' %}">Utwórz konto</a>
+                <a class="btn btn-outline-light-menu" href="{% url 'login' %}">Zaloguj</a>
+                <a class="btn btn-outline-light-menu" href="{% url 'register' %}">Utwórz konto</a>
             {% endif %}
-            <a class="btn btn-success" href="">Sklep</a>
+            <a class="btn btn-success" href="{% url 'store' %}">Sklep</a>
         </div>
         <hr class="horizontal-line">
     </nav>

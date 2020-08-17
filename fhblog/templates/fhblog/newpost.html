@@ -1,15 +1,20 @@
 {% include "fhblog/base.html" %}
-{% block title %}Dodaj post{% endblock title %}
 {% block content %}
 {% if user.is_authenticated %}
 <h1>Nowy post</h1>
     <div class="form-group">
-       <form method="POST">
-       {% csrf_token %}
+       <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.media}}
         {{form.as_p}}
         <button class="btn btn-outline-light">Dodaj post</button>
        </form>
     </div>
+<script>
+    const author_id = "{{user.username}}";
+    document.getElementById("username").placeholder = author_id;
+
+</script>
 {% else %}
 <h5>Nie jesteś zalogowany/a!</h5>
 {% endif %}

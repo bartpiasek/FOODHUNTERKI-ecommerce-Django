@@ -1,19 +1,34 @@
 {% comment %} {% extends 'fhblog/base.html' %} {% endcomment %}
 {% include "fhblog/base.html" %}
+{% load static %}
 {% block content %}
 <div class="globalstyle">
 <h1>Posty</h1>
-<hr class="horizontal-line">
-    <div class="poststyle">
-        {% for post in object_list %}
-        {% comment %} <div class="poststyle"> {% endcomment %}
-            <li><a href="{% url 'post-detail' post.pk %}">{{post.title}}</a><br/>
-            {{post.content|slice:":100"|safe}}</li>
-            
-            {% comment %} {{post.image}} {% endcomment %}
-        {% comment %} </div> {% endcomment %}
-        {% endfor %}
-    </div>
+<hr class="horizontal-line">     
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-md-4">
+                    {% for post in object_list %}
+                    <div class="card" style="width: 18rem;">
+                        {% comment %} <img src="{{ post.post_thumbnail_image.url }}" class="card-img-top"> {% endcomment %}
+                        <div>
+                            <div class="card-body">
+                                <a class="card-title" href="{% url 'post-detail' post.pk %}">{{post.title}}</a>
+                                <strong class="card-text">{{post.snippet}}</strong>
+                            </div>
+                            <div class="list-group list-group-flush">
+                                <a href="{% url 'category' post.category|slugify %}">{{post.category}}</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="{% url 'post-detail' post.pk %}" class="card-link">Czytaj całość</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% endfor %}
+                </div> 
+            </div>
+        </div> 
 </div>
 {% endblock content %}
 

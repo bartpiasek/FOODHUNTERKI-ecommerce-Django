@@ -7,7 +7,6 @@ import json
 import datetime
 
 def cookieCart(request):
-
 # BELOW ELSE 
     try:
         cart = json.loads(request.COOKIES['cart'])
@@ -45,6 +44,7 @@ def cookieCart(request):
 
     return {'cartItems':cartItems, 'order':order, 'items':items}
 
+
 # SHORTCUT FUNCTION FOR VIEWS.PY - store, checkout, cart
 def cartData(request):
     if request.user.is_authenticated:
@@ -59,6 +59,7 @@ def cartData(request):
         items = cookieData['items']
 
     return {'cartItems':cartItems, 'order':order, 'items':items}
+
 
 def guestOrder(request):
     print('User is not logged in')

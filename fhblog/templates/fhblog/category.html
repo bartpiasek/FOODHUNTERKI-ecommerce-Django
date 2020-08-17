@@ -1,0 +1,15 @@
+{% include "fhblog/base.html" %}
+{% block content %}
+<ul>
+<div class="globalstyle">
+    <h1>{{cats}}</h1>
+    {% for post in category_posts %}
+          <li><a href="{% url 'post-detail' post.pk %}">{{post.title}}</a><br/>
+            <a href="{% url 'category' post.pk %}">{{post.category}}</a>
+            <strong>{{post.content|slice:":100"|safe}}</strong></li>
+    {% endfor %}
+</div>
+</ul>
+{% endblock content %}
+
+

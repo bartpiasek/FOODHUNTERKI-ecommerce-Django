@@ -1,16 +1,21 @@
 {% include "fhblog/base.html" %}
 {% block content %}
 {% if user.is_authenticated %}
-<h1>Edytuj post</h1>
-<div class="poststyle">
-    <div class="form-group">
-       <form method="POST">
-       {% csrf_token %}
+    {% if user.id == post.author.id %}
+    <h1>Edytuj post</h1>
+    <div class="poststyle">
+        <div class="form-group">
+        <form method="POST">
+        {% csrf_token %}
+        {{form.media}}
         {{form.as_p}}
         <button class="btn btn-outline-light">Zapisz zmiany</button>
-       </form>
+        </form>
+        </div>
     </div>
-</div>
+    {% else %}
+    <h5>Nie jesteś zalogowany/a!</h5>
+    {% endif %}
 {% else %}
 <h5>Nie jesteś zalogowany/a!</h5>
 {% endif %}

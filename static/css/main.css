@@ -1,5 +1,4 @@
 .navbar-bar {
-    margin-top: 30px;
     margin-left: 5%;
     margin-right: 5%;
     background-color: white;
@@ -94,7 +93,7 @@
 
 /* BLOGAPP  */
 .poststyle {
-    border-color:gray;
+    border-color:black;
     border-top: 1px;
     border-right: 1px;
     border-bottom: 1px;
@@ -105,4 +104,50 @@
 }
 .globalstyle {
     padding: 20px;
+}
+.card-img {
+    width: 30px;
+    height: 30px;
+}
+.card-body {
+    width: 40%;
+    height: 200px;
+}
+.card {
+    width: 40%;
+    height: 200px;
+    margin: 10px;
+} 
+.btn.btn-outline-light-menu {
+    color:pink;
+    border-color: pink;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-radius: 0px;
+}
+.bloglist {
+    border-color:black;
+    border-top: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-left: 1px;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 20px;
+}
+.col {
+    border-color:black;
+    border-top: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-left: 1px;
+    border-radius: 10px;
+}
+.container {
+    border-color:black;
+    border-top: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-left: 1px;
 }
