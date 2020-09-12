@@ -33,5 +33,10 @@ urlpatterns = [
 if 'fhapipage' in settings.INSTALLED_APPS:
     urlpatterns += path('api/', include('fhapipage.urls'), name='fhapipage'),
 
+#TURN ON/OFF APP - fhemails - newsletter 
+if 'fhemails' in settings.INSTALLED_APPS:
+    urlpatterns += path('emails/', include('fhemails.urls'), name='fhemails'),
+
+
 
 urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

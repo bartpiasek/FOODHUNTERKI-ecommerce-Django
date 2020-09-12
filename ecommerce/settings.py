@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fhstore',
-    #'fhapipage',
+    # 'fhapipage',
     'fhblog',
     'fhauthsystem',
     'ckeditor',
-    'fhemails'
+    # 'fhemails'
 ]
 
 MIDDLEWARE = [
