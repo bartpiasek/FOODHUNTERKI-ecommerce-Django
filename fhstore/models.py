@@ -32,10 +32,17 @@ class Product(models.Model):
 
 
 class Order(models.Model):
+    ORDER_STATUS = (
+        ('Opłacone', 'Opłacone'),
+        ('Do wysyłki', 'Do wysyłki'),
+        ('Dostarczone', 'Dostarczone'),
+    )
+
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=100, null=True)
+    status = models.CharField(max_length=100, null=True, choices=ORDER_STATUS)
 
     def __str__(self):
         return str(self.id)

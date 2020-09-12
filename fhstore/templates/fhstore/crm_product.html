@@ -1,0 +1,32 @@
+{% extends 'fhstore/base.html' %}
+{% load static %}
+
+{% block content %}
+{% for product in products %}
+<tr>
+<p>{{product.name}}</p>
+</tr>
+{% endfor %}
+
+<h4>Ostatnie zamówienia</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  {% for order in orders %}
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>{{order.date_ordered}}</td>
+      <td>{{customers.email}}</td>
+      <td>@mdo</td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+{% endblock content %}

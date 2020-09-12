@@ -99,10 +99,24 @@ def processOrder(request):
 
     return JsonResponse('Payment complete', safe=False)
 
+#CRM VIRWS
+def crmHome(request):
+    orders = Order.objects.all()
+    customers =Customer.objects.all()
 
-def contact(request):
-    return render(request, 'fhstore/contact.html')
+    context = {
+        'orders': orders,
+        'customers': customers
+    }
+
+    return render(request, 'fhstore/crm_home.html', context)
 
 
-def paymentInfo(request):
-    return render(request, 'fhstore/payment.html')
+def crmProduct(request):
+    products = Product.objects.all()
+    return render(request, 'fhstore/crm_product.html', {'products': products})
+
+
+def crmOrder(request):
+    return render(request, 'fhstore/crm_order.html')
+

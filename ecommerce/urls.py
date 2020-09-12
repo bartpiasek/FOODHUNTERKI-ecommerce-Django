@@ -26,6 +26,7 @@ urlpatterns = [
     path('home/', include('fhblog.urls')),
     path('auth/', include('django.contrib.auth.urls')),
     path('auth/', include('fhauthsystem.urls')),
+    path('emails/', include('fhemails.urls'))
 ]
 
 #TURN ON/OFF APP - fhapipage 

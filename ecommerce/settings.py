@@ -38,10 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fhstore',
-    'fhapipage',
+    #'fhapipage',
     'fhblog',
     'fhauthsystem',
-    'ckeditor'
+    'ckeditor',
+    'fhemails'
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 #for fhblog auth
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+CELERY_BROKER_URL = 'redis://h:peb979b83b68185f706c736e9fff9ecbecc933bf970a43a190e5bbb73d6ba4a93@ec2-52-212-57-9.eu-west-1.compute.amazonaws.com:9659'
+
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+EMAIL_HOST = ''
+EMAIL_PORT = 123
+EMAIL_HOST_USER = '' 
+EMAIL_HOST_PASSWORD = '' 
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
